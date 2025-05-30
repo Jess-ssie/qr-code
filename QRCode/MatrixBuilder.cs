@@ -325,8 +325,29 @@ namespace QRCoder.Core.Implementations
             int direction = -1;
             int col = size - 1;
             int bitsUsed = 0;
-            while (col > 0)
+            while (col >= 0)
             {
+                if (col == 0)
+                {
+                    int rowLast = (direction == -1) ? size - 1 : 0;
+                    int rowEndLast = (direction == -1) ? -1 : size;
+                    for (; rowLast != rowEndLast; rowLast += direction)
+                    {
+                        if (matrix.IsReserved(rowLast, col)) continue;
+
+                        bool bit = false;
+                        if (bitIndex < totalBits)
+                        {
+                            int byteIndex = bitIndex / 8;
+                            int bitInByte = 7 - (bitIndex % 8);
+                            bit = (data[byteIndex] & (1 << bitInByte)) != 0;
+                        }
+
+                        matrix.SetModule(rowLast, col, bit, isFunction: false);
+                        bitIndex++;
+                    }
+                    break; 
+                }
                 // if (col == 6) col--; // пропускаем timing pattern
                 int row = (direction == -1) ? size - 1 : 0;
                 int rowEnd = (direction == -1) ? -1 : size;

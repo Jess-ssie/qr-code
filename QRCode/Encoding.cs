@@ -54,6 +54,8 @@ namespace Encoding
                 totalBytes++;
             }
 
+            Console.WriteLine($"DATA_LENGHT_BEFORE_CORRECTION: {encodedData.Count}");
+
             List<int> blockSizes = Encoding.CalculateBlockSizes(maxDataBytes, version, errorCorrectionLevel);
             byte[] finalDataBytes = ConvertBitsToBytes(encodedData);
             List<byte[]> distributedBytesOfBlock = DistributeBytesToBlocks(finalDataBytes, blockSizes);
@@ -76,6 +78,7 @@ namespace Encoding
 
 
             byte[] finalInterleaved = InterleaveBlocks(distributedBytesOfBlock, errorCorrectionBlocks);
+            Console.WriteLine($"DATA_LENGHT_BEFORE_CORRECTION: {finalInterleaved.Length}");
             return finalInterleaved; // або просто поверни byte[]
 
         }
