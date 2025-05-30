@@ -1,0 +1,49 @@
+## .NET
+bin/
+obj/
+[Ll]og/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Visual Studio
+.vscode/
+.vs/
+*.csproj.user
+*.dbmdl
+*.pdb
+*.cache
+*.ide
+
+## ASP.NET
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+appsettings.Local.json
+secrets.json
+
+## Entity Framework
+Migrations/*.Designer.cs
+Migrations/*Snapshot.cs
+
+## dotCover
+*.dotCover
+
+## Rider
+.idea/
+*.sln.iml
+
+## JetBrains Rider logs
+.idea/.idea/
+
+## OS-specific
+.DS_Store
+Thumbs.db
+
+## Logs
+*.log
+
+## Environment
+.env
+.env.*
